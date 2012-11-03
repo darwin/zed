@@ -1,0 +1,16 @@
+{
+    "name": "lib.jquery",
+    "version": "0.0.1",
+    "main": "jquery-plugin.js",
+    "private": true,
+
+    "dependencies": {
+    },
+
+    "plugin": {
+        "provides": ["lib.jquery"],
+        "consumes": [
+            "static"
+        ]
+    }
+}

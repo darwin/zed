@@ -1,0 +1,16 @@
+{
+    "name": "lib.impressjs",
+    "version": "0.0.1",
+    "main": "impressjs-plugin.js",
+    "private": true,
+
+    "dependencies": {
+    },
+
+    "plugin": {
+        "provides": ["lib.impressjs"],
+        "consumes": [
+            "static"
+        ]
+    }
+}

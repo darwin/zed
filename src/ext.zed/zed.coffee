@@ -3,6 +3,10 @@ define (require, exports, module) ->
   ext = require("core/ext")
   markup = require("text!ext/zed/zed.xml")
   editors = require("ext/editors/editors")
+  impress = require('impress/js/impress')
+  jquery = require('jquery')
+  cssString = require("text!impress/css/impress-demo.css")
+  cssZed = require("text!ext/zed/zed.css")
 
   zed =
     name: "Z-Editor"
@@ -14,21 +18,28 @@ define (require, exports, module) ->
     nodes: []
 
     setDocument: (doc, actiontracker) ->
-      console.log "setDocument", doc
+      console.log "setDocument", doc, markup
       doc.session = apf.escapeXML(doc.getNode().getAttribute("path"))
-      doc.addEventListener "prop.value", (e) ->
+      doc.addEventListener "prop.value", (e) =>
         return unless doc
 
         console.log "got", e.value
-        doc.isInited = true;
+        doc.isInited = true
+
+        console.log "jq", $(@root).parent()
+        $(@root).parent().css overflow: "hidden"
+        window.impress("zed-stage").init()
 
       doc.dispatchEvent "init"
 
     hook: ->
 
     init: (amlPage) ->
-      editor = zedCanvas
-      editor.show()
+      apf.importCssString(cssString)
+      apf.importCssString(cssZed)
+
+      @root = zedCanvas.$ext
+      zedCanvas.show()
 
     enable: ->
       @nodes.each (item) ->

@@ -4,17 +4,17 @@ var fs = require("fs");
 var argv = require('./../cloud9/node_modules/optimist').argv;
 var path = require("path");
 
-var __xdirname = __dirname + "/../cloud9/configs";
+var cloud9ConfigsDir = __dirname + "/../cloud9/configs";
 
 var clientExtensions = {};
-var clientDirs = fs.readdirSync(__xdirname + "/../plugins-client");
+var clientDirs = fs.readdirSync(cloud9ConfigsDir + "/../plugins-client");
 for (var i = 0; i < clientDirs.length; i++) {
     var dir = clientDirs[i];
     if (dir.indexOf("ext.") !== 0)
         continue;
 
     var name = dir.split(".")[1];
-    clientExtensions[name] = __xdirname + "/../plugins-client/" + dir;
+    clientExtensions[name] = cloud9ConfigsDir + "/../plugins-client/" + dir;
 }
 
 var projectDir = (argv.w && path.resolve(process.cwd(), argv.w)) || process.cwd();
@@ -47,6 +47,8 @@ var config = [
     "./../plugins-client/lib.treehugger",
     "./../plugins-client/lib.v8debug",
     "./../plugins-client/lib.requirejs",
+    "./../plugins-client/lib.impressjs",
+    "./../plugins-client/lib.jquery",
     {
         packagePath: "smith.io/server-plugin",
         messagePath: "/smith.io/server",
@@ -169,7 +171,7 @@ var config = [
     },
     {
         packagePath: "connect-architect/connect.session.file",
-        sessionsPath: __xdirname + "/../.sessions"
+        sessionsPath: cloud9ConfigsDir + "/../.sessions"
     },
     "./cloud9.permissions",
     {

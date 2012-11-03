@@ -8,7 +8,9 @@
             "ext.zed"
         ],
         "consumes": [
-            "client-plugins"
+            "client-plugins",
+            "lib.jquery",
+            "lib.impressjs"
         ]
     }
 }
