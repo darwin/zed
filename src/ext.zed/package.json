@@ -1,0 +1,14 @@
+{
+    "name": "ext.zed",
+    "version": "0.0.1",
+    "main": "zed-ext.js",
+    "private": true,
+    "plugin": {
+        "provides": [
+            "ext.zed"
+        ],
+        "consumes": [
+            "client-plugins"
+        ]
+    }
+}
