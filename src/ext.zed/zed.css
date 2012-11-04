@@ -26,10 +26,10 @@
   right: 0px !important;
 }
 
-#zed-stage .ace_active-line {
+#zed-stage .ace_content {
   width: 100% !important;
 }
 
-#zed-stage .ace_content {
-  width: 100% !important;
+#zed-stage .ace_line {
+  height: 12px !important;
 }

@@ -22,8 +22,6 @@ documentMixin =
     $el.append $wrap
     $where.append $el
 
-    $wrap.html("'hello!'")
-
     editor = ace.edit id+"-wrapper"
     editor.setTheme "ace/theme/textmate"
     editor.setShowPrintMargin no
@@ -40,6 +38,13 @@ documentMixin =
 
     renderer = editor.renderer
     renderer.setShowGutter no
+
+    # TODO: prevent ace recalculation and line jumping
+    old = renderer.$textLayer.$measureSizes
+    renderer.$textLayer.$measureSizes = ->
+      # res = old.call(this)
+      # console.log "measure sizes", res
+      null
 
     path = absolutizePath @session, snippet.file
     @zed.fs.readFile path, (content) ->

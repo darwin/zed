@@ -8,10 +8,10 @@ Shares prerequisities with cloud9, install sourcemint => see [their readme](http
 
     git clone --recursive git@github.com:darwin/zed.git
     cd zed
-    ./bin/init.sh
+    rake init
 
 ### Hack!
 
-    ./bin/dev.sh
+    rake dev
 
 => [http://localhost:3131](http://localhost:3131)
