@@ -10,7 +10,8 @@
         "consumes": [
             "client-plugins",
             "lib.jquery",
-            "lib.impressjs"
+            "lib.impressjs",
+            "lib.underscorejs"
         ]
     }
 }

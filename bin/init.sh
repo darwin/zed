@@ -7,3 +7,5 @@ cd ..
 ./bin/hlink/hlink src/lib.impressjs cloud9/plugins-client/lib.impressjs
 
 ./bin/hlink/hlink src/lib.jquery cloud9/plugins-client/lib.jquery
+
+./bin/hlink/hlink src/lib.underscorejs cloud9/plugins-client/lib.underscorejs

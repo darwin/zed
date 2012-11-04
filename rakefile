@@ -1,0 +1,58 @@
+require 'listen' # https://github.com/guard/listen
+require 'term/ansicolor'
+require 'systemu'
+
+include Term::ANSIColor
+
+def announce(cmd)
+  puts "> " + yellow(cmd)
+end
+
+def die(msg, status=1)
+  puts red("Error[#{status||$?}]: #{msg}")
+  exit status||$?
+end
+
+def sys(cmd, check_status=true)
+  announce(cmd)
+  res = system(cmd)
+  return res unless check_status
+  die "failed!" unless res
+end
+
+def compile
+  cmd = "coffee --require ./util/include.coffee --require ./util/license.coffee -c src/ext.zed/zed.coffee"
+  announce(cmd)
+  status = systemu cmd, 1=>out=$stdout, 2=>err=''
+  $stderr.print err
+  return if status.exitstatus == 0
+  puts "\x07" # bell!
+end
+
+############################################################
+
+desc "init"
+task :init do
+  sys("./bin/init.sh")
+end
+
+desc "dev"
+task :dev do
+  sys("./bin/dev.sh &")
+
+  compile()
+  puts "listening to changes under src folder..."
+  Listen.to('src', :filter => /\.coffee$/) do |modified, added, removed|
+    compile()
+  end
+
+  # wait for signal and instantly kill all ofsprings
+  # http://autonomousmachine.com/posts/2011/6/2/cleaning-up-processes-in-ruby
+  trap("INT") do
+    Process.kill('INT', -Process.getpgrp)
+    exit
+  end
+  Process.kill('INT', -Process.getpgrp)
+end
+
+task :default => :dev

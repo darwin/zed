@@ -1,0 +1,16 @@
+{
+    "name": "lib.underscorejs",
+    "version": "0.0.1",
+    "main": "underscorejs-plugin.js",
+    "private": true,
+
+    "dependencies": {
+    },
+
+    "plugin": {
+        "provides": ["lib.underscorejs"],
+        "consumes": [
+            "static"
+        ]
+    }
+}
