@@ -42,7 +42,9 @@ define (require, exports, module) ->
       $(@root).parent().css overflow: "hidden"
       $(@root).click (e) ->
         return if $(e.target).parents('.step').length
-        impress("zed-stage").next() # switch editor only when clicking outside ace into background of zedCanvas
+        selected = impress("zed-stage").next() # switch editor only when clicking outside ace into background of zedCanvas
+        editor = ace.edit $(selected).find('.zed-wrapper').get(0)
+        editor.focus()
 
       zedCanvas.show()
 

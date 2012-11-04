@@ -2,7 +2,7 @@
   <a:img id="imgEditor" flex="1" anchors="0 0 0 0" visible="false"/>
   <a:bar id="zedCanvas" flex="1" anchors="0 0 0 0" visible="false">
     <div id="zed-stage" data-transition-duration="400">
-      <div id="bored" class="step slide" data-x="-1000" data-y="-1500">
+      <!-- <div id="bored" class="step slide" data-x="-1000" data-y="-1500">
         <q>Aren't you just <b>bored</b> with all those slides-based presentations?</q>
       </div>
       <div class="step slide" data-x="0" data-y="-1500">
@@ -45,7 +45,7 @@
         <span class="footnote">* beat that, prezi ;)</span>
       </div>
       <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
-      </div>
+      </div> -->
     </div>
   </a:bar>
 </a:application>
